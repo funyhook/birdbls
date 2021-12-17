@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ../scripts/ 
+cd /ql/scripts/ 
 
 arr=("zero205" "Aaron-lv" "lsh26" "transfer" "fastgit" "smiek2121" "lukelucky6" "fatelight")
 
