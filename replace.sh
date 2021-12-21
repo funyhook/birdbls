@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ../scripts/ 
 
-arr=("zero205" "Aaron-lv" "lsh26" "transfer" "fastgit" "smiek2121" "lukelucky6" "fatelight" "Annyoo2021")
+arr=("zero205" "Aaron-lv" "lsh26" "transfer" "fastgit" "smiek2121" "smeik2221" "lukelucky6" "fatelight" "Annyoo2021")
 
 #echo ${array[0]}
 for((i=0;i<${#arr[@]};i++));
