@@ -27,3 +27,4 @@ cd /ql/config && wget  https://ghproxy.com/https://raw.githubusercontent.com/fun
 ``` shell
 task /ql/config/clearDockerLog.sh 
 ```
+![随意就好](http://static.funyhook.com/donate.jpg?raw=true)
