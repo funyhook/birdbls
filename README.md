@@ -29,4 +29,4 @@ cd /ql/config && wget  https://ghproxy.com/https://raw.githubusercontent.com/fun
 task /ql/config/clearDockerLog.sh 
 ```
 ## 渴了，可乐？
-<img src="https://github.com/funyhook/cleansteal/blob/main/code.60ba4351.jpg"  height="250" width="400">
+<img src="http://static.funyhook.com/donate.jpg"  height="300" width="400">
