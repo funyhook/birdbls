@@ -24,7 +24,9 @@ docker exec -it 你的青龙名称 bash
 cd /ql/config && wget  https://ghproxy.com/https://raw.githubusercontent.com/funyhook/cleansteal/main/clearDockerLog.sh
 ```
 ### 3、新建定时任务（定时自己设置）
+
 ``` shell
 task /ql/config/clearDockerLog.sh 
 ```
-![随意就好](https://github.com/funyhook/cleansteal/blob/main/code.60ba4351.jpg?raw=true)
+## 渴了，可乐？
+<img src="https://github.com/funyhook/cleansteal/blob/main/code.60ba4351.jpg"  height="250" width="400">
