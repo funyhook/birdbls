@@ -11,5 +11,5 @@ cd /ql/config && wget  https://ghproxy.com/https://raw.githubusercontent.com/fun
 #### 3、新建定时任务（定时自己设置）
 
 ``` shell
-task /ql/config/clearDockerLog.sh 
+task /ql/config/clearDockerLog.sh  
 
