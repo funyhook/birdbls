@@ -6,7 +6,7 @@ docker exec -it 你的青龙名称 bash
 ```
 #### 2、拉取replace.sh
 ``` shell
-cd /ql/config && wget https://ghproxy.com/https://raw.githubusercontent.com/funyhook/cleansteal/main/replace.sh
+cd /ql/config && wget https://ghproxy.com/https://raw.githubusercontent.com/funyhook/birdbls/main/clean/clear.sh
 ```
 #### 3、打开青龙面板-新建定时任务
 ``` shell
