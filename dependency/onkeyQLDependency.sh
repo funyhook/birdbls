@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+#by：微信公众号：玩机匠
 
 # 青龙一键安装脚本
 # GitHub仓库： https://github.com/funyhook/birdbls/QLDependency

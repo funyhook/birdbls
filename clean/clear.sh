@@ -1,4 +1,5 @@
 #!/bin/bash
+#by：微信公众号：玩机匠
 cd ../scripts/ 
 
 arr=("zero205" "Aaron-lv" "lsh26" "transfer" "fastgit" "smiek2121" "smeik2221" "lukelucky6" "fatelight" "Annyoo2021" "KingRan521" "smiek")
