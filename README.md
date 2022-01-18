@@ -6,5 +6,6 @@
  - [docker](docker) ：docker相关脚本
  - [scripts](scripts)：自用脚本
  - [disable](disable)：禁用重复任务
+ - [dependency](dependency)：青龙依赖一键安装脚本
 ## 渴了，可乐？
 <img src="static/img/donate.png"  height="300" width="400">
