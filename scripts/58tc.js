@@ -1,6 +1,7 @@
 /*
 58同城
-邀请注册链接：https://wxznhytongzhen.ganji.com/magicminers/web/v/invitepagenew/detergeviva?identity=32CCFDFFDC5C31E632953BC30AE128439AB6BC946308BED4129E119D7EA50C6608A121291361707482F436F00B97184F&source=tc&pid=1936&invitetype=8&platform=m&targetpage=home
+app注册链接：
+https://wxzvlktongzhen.ganji.com/magicminers/web/v/invitepageold/janglerhammond?identity=C1C68A4B646E534B89A5FB81568B6F81383B3469035CEF45A57A2830E8EB1C6523CEDE457019D4D774ECBFB5FDA73123&source=tc&webtype=wkWebview
 
 安卓貌似需要root才能捉到包，IOS随便捉
 多账号切换账号不能退出登录
@@ -19,9 +20,9 @@
 V2P/圈叉：
 [task_local]
 #58同城
-7 * * * * https://raw.githubusercontent.com/leafxcy/JavaScript/main/58tc.js, tag=58同城, enabled=true
+7 * * * * https://raw.githubusercontent.com/funyhook/birdbls/main/scripts/58tc.js, tag=58同城, enabled=true
 [rewrite_local]
-https://magicisland.58.com/web/sign/getIndexSignInInfo url script-request-header https://raw.githubusercontent.com/leafxcy/JavaScript/main/58tc.js
+https://magicisland.58.com/web/sign/getIndexSignInInfo url script-request-header https://raw.githubusercontent.com/funyhook/birdbls/main/scripts/58tc.js
 [MITM]
 hostname = magicisland.58.com
 */
