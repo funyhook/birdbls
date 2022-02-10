@@ -6,7 +6,6 @@
 第一个CK失效会退出脚本
 
 ————————————————
-入口：[ 1.24~2.14 联合开卡 (https://jinggengjcq-isv.isvjcloud.com/fronth5/#/pages/unitedCardNew20220124/unitedCardNew20220124?actId=29c257bced_220124)]
 
 请求太频繁会被黑ip
 过10分钟再执行
