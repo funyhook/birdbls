@@ -1,8 +1,8 @@
 /*
 九章头条 leaf
-IOS可以直接在appstore搜索下载，也可以用下面邀请链接
-邀请链接：http://6vjami.sousou.com/pages/activity/download?invite_code=KoQex08o
-邀请码：KoQex08o
+IOS可以直接用下面链接
+App下载注册链接：http://6vjami.sousou.com/pages/activity/download?invite_code=wlDP2Myl
+邀请码：wlDP2Myl
 
 变量 jzttToken，多账号用@隔开
 格式 token@token@token
