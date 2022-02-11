@@ -3,7 +3,7 @@ cron "18 8 * * *"
 
 2-9 发布第一版  签到+积分抽奖
 
-入口: https://github.com/yml2213/javascript/blob/master/ksf/ksf.jpg
+入口: https://github.com/funyhook/birdbls/blob/main/scripts/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220211133506.png?raw=true
 
 注意事项 ： 一定要仔细阅读一下内容
 =============青龙变量格式=============
