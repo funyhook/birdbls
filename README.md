@@ -1,5 +1,6 @@
 
-
+###
+自用，下载后24小时删除！
 ### 目录说明
  - [clean](clean) ：清理 shareCodes authorCodes 具体看目录内使用说明
  - [code2ql](code2ql) ：互助码三件套
