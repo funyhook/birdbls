@@ -1,7 +1,7 @@
 /*
 cron "18 8 * * *"
 
-2-9 发布第一版  签到+积分抽奖
+2-9 发布第一版  签到+积分抽奖（搬运自：yml2213）
 
 入口: https://github.com/funyhook/birdbls/blob/main/scripts/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220211133506.png?raw=true
 
