@@ -16,7 +16,7 @@ export yml_ksf_data='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVU0VSX0lEIjoiNjg5MD
 抽奖token: 可以从 关键词 turntable/open 包里找到
 =============变量获取==========
 懒得写了，自己研究吧
-不会的请百度或者群里求助：QQ群：1001401060  tg：https://t.me/yml_tg
+不会的请百度或者群里求助：QQ群：948356041  
 
 */
 const $ = new Env('康师傅');
