@@ -7,15 +7,11 @@ cron "18 8 * * *"
 
 注意事项 ： 一定要仔细阅读一下内容
 =============青龙变量格式=============
-export yml_ksf_data='xxx@xxx'
-xxx :xxx是token 签到,抽奖token相同(感谢全体测试人员);  多账号使用 @ 分割
-=============青龙变量实例=============
-export yml_ksf_data='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVU0VSX0lEIjoiNjg5MDQ0MTYxMzE3NzU4OTc2MS1XRUIiLCJleHAiOjE2NDQ5OTE5NTl9.uZ-6fmExOsAQoqTl7aTpGy-uS38BPEV3RrR89YLVfuc@eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVU0VSX0lEIjoiNjg5MDQ0MTYxMzE3NzU4OTc2MS1XRUIiLCJleHAiOjE2NDQ5OTQ2MzV9.72rW4JHQ4Y3NhXqp7J1-QMj9BLh1TyaD2AL3wskSLZ0'
-=============变量解释==========
-签到token: 可以从 关键词 integralSignIn 包里找到
-抽奖token: 可以从 关键词 turntable/open 包里找到
+export yml_ksf_data='token@token'
+xxx :xxx是token 签到,抽奖token相同;  多账号使用 @ 分割
 =============变量获取==========
-懒得写了，自己研究吧
+token: 首页点击签到 然后抓包软件搜关键词 integralSignIn 包里找到
+
 不会的请百度或者群里求助：QQ群：948356041  
 
 */
