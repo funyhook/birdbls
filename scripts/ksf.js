@@ -65,7 +65,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
         // await test();
         await qd();
         await $.wait(2 * 1000);
-        if (process.env.yml_ksf_draw) {
+        if (process.env.yml_ksf_draw=='true') {
             await cj();
             await $.wait(2 * 1000);
         }
