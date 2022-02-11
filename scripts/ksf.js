@@ -8,6 +8,7 @@ cron "18 8 * * *"
 注意事项 ： 一定要仔细阅读一下内容
 =============青龙变量格式=============
 export yml_ksf_data='token@token'
+export yml_ksf_draw="false" #抽奖开关 true 开启 false关闭
 xxx :xxx是token 签到,抽奖token相同;  多账号使用 @ 分割
 =============变量获取==========
 token: 首页点击签到 然后抓包软件搜关键词 integralSignIn 包里找到
@@ -64,10 +65,10 @@ const notify = $.isNode() ? require('./sendNotify') : '';
         // await test();
         await qd();
         await $.wait(2 * 1000);
-        await cj();
-        await $.wait(2 * 1000);
-
-
+        if (process.env.yml_ksf_draw) {
+            await cj();
+            await $.wait(2 * 1000);
+        }
     }
 
 })()
