@@ -1,5 +1,6 @@
-//[rule:code ?]//京东口令解析
+//功能：京东口令解析
 //作者：微信公众号【玩机匠】！
+//[rule:code ?] code ￥FIDLKSN&￥
 var code = param(1);
 sendText("正在解析口令，请稍等片刻......")
 var _data = {"code": code}
