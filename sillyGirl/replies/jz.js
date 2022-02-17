@@ -1,4 +1,5 @@
-//[rule: 九章 ?] 九章手机号
+//[rule: jz ?]  jz 13011066666
+//[rule: 九章 ?] 九章 13011066666
 //转发请留下原作者-微信公众号【玩机匠】！
 let chatId=GetChatID()
 let userId=GetUserID()
@@ -34,12 +35,16 @@ function login(body){
         "body": body
     })
     if (data && data.code==0) {
-        sendText("恭喜您，获取token成功！当前token为："+data.data.token)
-        if(autoSumit){
-             breakIn("ql env set jzttToken "+data.data.token)
-             sendText("token已成功提交到青龙："+bucketGet("qinglong","host"))
+        if(data.data.token.code){
+            sendText("😂😂😂，获取token失败："+data.data.token.msg)
         }else{
-             sendText("已关闭自动提交token到青龙环境变量，请手动配置！")
+              sendText("恭喜您，获取token成功！当前token为："+data.data.token)
+            if(autoSumit){
+                 breakIn("ql env set jzttToken "+data.data.token)
+                 sendText("token已成功提交到青龙："+bucketGet("qinglong","host"))
+            }else{
+                 sendText("已关闭自动提交token到青龙环境变量，请手动配置！")
+            }
         }
        
     }else{
