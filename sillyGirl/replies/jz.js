@@ -1,4 +1,5 @@
 //[rule: 九章 ?] 九章手机号
+//转发请留下原作者-微信公众号【玩机匠】！
 let chatId=GetChatID()
 let userId=GetUserID()
 sendText("注意：多账号请关闭自动提交功能(set qinglong jz false)，手动配置环境变量！！！:")
