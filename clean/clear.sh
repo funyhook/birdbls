@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ../scripts/ 
+echo “by：微信公众号：玩机匠”
 
 arr=("zero205" "Aaron-lv" "lsh26" "transfer" "fastgit" "shufflewzc" "smiek2121" "smiek2221" "lukelucky6" "fatelight" "Annyoo2021" "KingRan521" "smiek")
 
