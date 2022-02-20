@@ -91,19 +91,25 @@ function setEnvs(method,envs){
 
 function getTTLToken(mobile,password) {
     var data =  request({
-        url: 'https://www.ttljf.com/ttl_site/user.do',
+        url: 'https://www.ttljf.com/ttl_chefHub/login/restaurant',
         method: 'post',
-        body: 'username='+mobile+'&password='+password+'&device_brand=apple&device_model=iPhone11,8&device_uuid=&device_version=13.5&mthd=login&platform=ios&sign=',
+        body: {
+            "mthd":"login",
+            "platform":"wx_mini",
+            "userName":mobile,
+            "password":password
+            
+        },
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            "Content-Type": "application/json;charset=UTF-8",
             "Connection": "keep-alive",
             "User-Agent": "otole/1.4.8 (iPhone; iOS 13.5; Scale/2.00)",
             "Host": "www.ttljf.com"
         },
         dataType:"json"
     });
-	if(data && data.code=="0000"){
-    	return data.user.loginToken
+	if(data && data.code==0){
+    	return data.data.token
 	}else{
 	    sendText(JSON.stringify(data))
 	}
