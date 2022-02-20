@@ -1,4 +1,5 @@
 //[rule: ttl ? ?] ttl 手机号 密码
+//微信公众号【玩机匠】 回复ttl 获取最新ttl插件
 let chatId=GetChatID()
 let userId=GetUserID()
 
