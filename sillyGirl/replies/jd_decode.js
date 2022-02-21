@@ -17,6 +17,6 @@ request({
     	if(data){
     		sendText(data.data.jumpUrl)}
     }else{
-    		sendText("网络请求失败："+data.msg)
+    		sendText("【玩机匠】提醒：网络请求失败："+data.msg)
     	}
 });

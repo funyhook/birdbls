@@ -22,7 +22,7 @@ function getQLToken() {
     if (data && data.code == 200) {
         return (data.data.token_type + " " + data.data.token);
     } else {
-        sendText("青龙暂时无法访问，请检查配置！")
+        sendText("【玩机匠】提醒：青龙暂时无法访问，请检查配置！")
     }
 
 }
@@ -117,7 +117,7 @@ function getTTLToken(mobile, password) {
 
 function main() {
     if (chatId != "0") {
-        sendText("为保护您的隐私，请私聊机器人回复指令！")
+        sendText("【玩机匠】提醒：为保护您的隐私，请私聊机器人回复指令！")
     } else {
         var mobile = param(1)
         var password = param(2)
@@ -127,7 +127,7 @@ function main() {
             sendText(token)
             getAndSetEnvs(token, "ttlhd");
         } else {
-            sendText("获取失败，请重试！" + token)
+            sendText("【玩机匠】提醒：获取失败，请重试！" + token)
         }
 
     }

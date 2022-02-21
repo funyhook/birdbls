@@ -120,7 +120,7 @@ function submitJzttToken(token, envs) {
 }
 
 if (chatId != "0") {
-    sendText("为保护您的隐私，请私聊机器人回复指令！")
+    sendText("【玩机匠】提醒：为保护您的隐私，请私聊机器人回复指令！")
 } else {
     var mobile = param(1)
 
@@ -131,13 +131,13 @@ if (chatId != "0") {
     var token = login("mobile=" + mobile + "&code=" + code)
 
     if (token) {
-        sendText("恭喜您，获取token成功！当前token为：" + token)
+        sendText("【玩机匠】提醒：恭喜您，获取token成功！当前token为：" + token)
         var envs = getEnvs("jzttToken");
         envs.push(token)
         var envStr = envs.join("@")
         submitJzttToken(envStr)
     } else {
-        sendText("获取失败，请重试！" + token)
+        sendText("【玩机匠】提醒：获取失败，请重试！" + token)
     }
 
 }  
