@@ -8,8 +8,8 @@ var content = image(ele) + "\n到饭点啦，微信扫码领饿了么20元无门
 var imType = ImType();
 if (imType == "fake") {
     var groups = [{
-        imType: "tg",
-        groupCode: -1001583071436,
+        imType: "qq",
+        groupCode: 948356041,
     }]
     for (var i = 0; i < groups.length; i++) {
         groups[i]["content"] = content
