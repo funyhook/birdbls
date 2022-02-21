@@ -1,5 +1,5 @@
 // [rule: dy ?] dy https://v.douyin.com/eo1gaGQ/
-//抖音去水印解析
+//抖音视频去水印解析
 // by 微信公众号：【玩机匠】
 function main() {
     var address = param(1) //匹配规则第一个问号的值
@@ -13,13 +13,11 @@ function main() {
         if (content.play) {
              sendText(content.play)
         }else{
-              sendText("抖音链接错误，请在抖音app中点击分享-复制链接")
+              sendText("【玩机匠】提醒：仅支持视频去水印哦！请在抖音app中点击分享-复制链接")
         }
     }else{
-         sendText("抖音链接错误，请在抖音app中点击分享-复制链接")
+          sendText("【玩机匠】提醒：仅支持视频去水印哦！请在抖音app中点击分享-复制链接")
     }
-   
-
 }
 
 main()
