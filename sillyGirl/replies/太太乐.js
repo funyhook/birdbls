@@ -8,17 +8,17 @@ let client_id = bucketGet("qinglong", "client_id")
 let client_secret = bucketGet("qinglong", "client_secret")
 let host = bucketGet("qinglong", "host")
 
-var headers = {
+const headers = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Mobile Safari/537.36",
     "content-type": "application/json"
 };
 
 function getQLToken() {
-    var data = request({
+    const data = request({
         "url": host + "/open/auth/token?client_id=" + client_id + "&client_secret=" + client_secret,
         "method": "get",
         "dataType": "json"
-    })
+    });
     if (data && data.code == 200) {
         return (data.data.token_type + " " + data.data.token);
     } else {
@@ -28,41 +28,38 @@ function getQLToken() {
 }
 
 function getAndSetEnvs(newToken, key) {
+    let body;
+    const envs = [];
     headers.authorization = getQLToken()
-    var envs = []
-    var data = request({
+    const data = request({
         "url": host + "/open/envs?searchValue=" + key,
         "headers": headers,
         "method": "get",
         "dataType": "json"
 
-    })
+    });
     if (data && data.code == 200) {
-        var update = false
         if (data.data.length) {
             sendText("已存在环境变量【" + key + "】，将把最新token追加末尾！")
-            for (var i = 0; i < data.data.length; i++) {
-                envs.push(data.data[i].value)
-            }
             envs.push(newToken)
-            var ttlhd = envs.join("@")
+            data.data.forEach(o => envs.push(o.value))
+            const ttlhd = envs.join("@");
             sendText("太太乐全部token：" + ttlhd)
-            var body =
-                {
-                    name: "ttlhd",
-                    value: ttlhd,
-                    remarks: "token",
-                    _id: data.data[0]._id
-                }
+            body = {
+                name: "ttlhd",
+                value: ttlhd,
+                remarks: "token",
+                _id: data.data[0]._id
+            };
             setEnvs("put", body)
         } else {
-            var body = [
+            body = [
                 {
                     name: "ttlhd",
                     value: newToken,
                     remarks: "token"
                 }
-            ]
+            ];
             setEnvs("post", body)
         }
 
@@ -72,14 +69,14 @@ function getAndSetEnvs(newToken, key) {
 
 function setEnvs(method, envs) {
     headers.Authorization = getQLToken()
-    var data = request({
+    const data = request({
         "url": host + "/open/envs",
         "headers": headers,
         "method": method,
         "dataType": "json",
         "body": envs
 
-    })
+    });
     if (data && data.code == 200) {
         sendText("【玩机匠】提醒⏰：太太乐token提交成功！")
     } else {
@@ -89,7 +86,7 @@ function setEnvs(method, envs) {
 
 
 function getTTLToken(mobile, password) {
-    var data = request({
+    const data = request({
         url: 'https://www.ttljf.com/ttl_chefHub/login/restaurant',
         method: 'post',
         body: {
@@ -119,9 +116,9 @@ function main() {
     if (chatId != "0") {
         sendText("【玩机匠】提醒：为保护您的隐私，请私聊机器人回复指令！")
     } else {
-        var mobile = param(1)
-        var password = param(2)
-        var token = getTTLToken(mobile, password);
+        const mobile = param(1);
+        const password = param(2);
+        const token = getTTLToken(mobile, password);
         if (token) {
             sendText("【玩机匠】提醒⏰：恭喜您，获取token成功！当前token为：")
             sendText(token)
