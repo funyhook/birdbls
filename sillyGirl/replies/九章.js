@@ -52,7 +52,7 @@ function getAndSetEnvs(newToken,key){
                     {
                      name:"jzttToken",
                      value:jzttToken,
-                     remarks: "token",
+                     remarks: "jzttToken",
                      _id:data.data[0]._id
                     }
             setEnvs("put",body)        
@@ -61,7 +61,7 @@ function getAndSetEnvs(newToken,key){
                     {
                      name:"jzttToken",
                      value:newToken,
-                     remarks: "token"
+                     remarks: "jzttToken"
                     }
                 ]
             setEnvs("post",body)
