@@ -15,11 +15,11 @@ var headers = {
 };
 
 function getQLToken() {
-    var data = request({
+    const data = request({
         "url": host + "/open/auth/token?client_id=" + client_id + "&client_secret=" + client_secret,
         "method": "get",
         "dataType": "json"
-    })
+    });
     if (data && data.code == 200) {
         return (data.data.token_type + " " + data.data.token);
     } else {
@@ -32,6 +32,7 @@ function getAndSetEnvs(newToken, key) {
     let body;
     headers.authorization = getQLToken()
     const envs = [];
+    const remarks =[];
     const data = request({
         "url": host + "/open/envs?searchValue=" + key,
         "headers": headers,
@@ -44,6 +45,7 @@ function getAndSetEnvs(newToken, key) {
             sendText("已存在环境变量【" + key + "】，将把最新token追加末尾！")
             envs.push(newToken)
             data.data.forEach(o=>envs.push(o.value))
+            data.data.forEach(o=>remarks.push(o.remarks))
             const jzttToken = envs.join("@");
             sendText("九章全部token：" + jzttToken)
             body = {
@@ -70,14 +72,13 @@ function getAndSetEnvs(newToken, key) {
 
 function setEnvs(method, envs) {
     headers.Authorization = getQLToken()
-    var data = request({
+    const data = request({
         "url": host + "/open/envs",
         "headers": headers,
         "method": method,
         "dataType": "json",
         "body": envs
-
-    })
+    });
     if (data && data.code == 200) {
         sendText("【玩机匠】提醒：九章token提交成功！")
     } else {
