@@ -1,16 +1,15 @@
 /*
-太太乐兑换
-export ttlhd='手机号1#密码1@手机号2#密码2' #多账号使用@分割
-export  ttldh =‘61’ # 太太乐兑换商品id：633=10元手机话费（仅电信用户） 631=30元手机话费（仅移动用户） 62=5元手机话费（仅联通用户） 61=2元手机话费（仅联通用户）
+太太乐兑换 多账号使用@分割
+export ttl_account='手机号1#密码#兑换id' 
+太太乐兑换商品id：633：10元手机话费（仅电信用户） 631：30元手机话费（仅移动用户） 62：5元手机话费（仅联通用户） 61：2元手机话费（仅联通用户）
 */
-
 
 const $ = new Env('太太乐兑换');
 let message;
 const notify = $.isNode() ? require('./sendNotify') : '';
-//
+// 633=10元手机话费（仅电信用户） 631=30元手机话费（仅移动用户） 62=5元手机话费（仅联通用户） 61=2元手机话费（仅联通用户）
 let giftAmount, giftNames, giftPrice, date;
-let ttlhd = $.isNode() ? (process.env.ttlhd ? process.env.ttlhd : "") : ($.getdata('ttlhd') ? $.getdata('ttlhd') : "");
+let ttl_account = $.isNode() ? (process.env.ttl_account ? process.env.ttl_account : "") : ($.getdata('ttl_account') ? $.getdata('ttl_account') : "");
 const ttldh = $.isNode() ? (process.env.ttldh ? process.env.ttldh : "") : ($.getdata('ttldh') ? $.getdata('ttldh') : "");
 
 Date.prototype.Format = function (fmt) { //author: meizz
@@ -37,15 +36,14 @@ Date.prototype.Format = function (fmt) { //author: meizz
     giftPrice = {};
     await ttl_gift();
     date = (new Date()).Format("yyyyMMdd");
-    ttldhArr = ttldh.split('@');
-    console.log(`========共${ttldhArr.length}个兑换账号========\n`);
-    ttlhdArr = ttlhd.split('@');
-    console.log(`共${ttlhdArr.length}个cookie`);
-    for (let k = 0; k < ttldhArr.length; k++) {
-        user_pwd = ttlhdArr[k].split('#');
-        user = user_pwd[0];
-        pwd = user_pwd[1];
-        giftId = ttldhArr[k];
+    ttlAccountList = ttl_account.split('@');
+    console.log(`========共${ttlAccountList.length}个兑换账号========\n`);
+
+    for (let k = 0; k < ttlAccountList.length; k++) {
+        let account = ttlAccountList[k].split("#");
+        user = account[0];
+        pwd = account[1];
+        giftId = account[2];
         stockAmount = giftAmount[giftId];
         stockName = giftNames[giftId];
         stockPrice = giftPrice[giftId];
@@ -71,6 +69,10 @@ Date.prototype.Format = function (fmt) { //author: meizz
         $.setdata($.integral - stockPrice, `${date}_${user}`);
         $.msg($.name, ``, `\n${message}`)
         if ($.isNode()) await notify.sendNotify($.name, `${message}`);
+
+
+
+
     }
 
 
@@ -79,17 +81,17 @@ Date.prototype.Format = function (fmt) { //author: meizz
     .finally(() => $.done());
 
 
-async function ttl_gift() {
+async function ttl_gift(){
     return new Promise((resolve) => {
 
         let param = {
             url: `http://www.ttljf.com/ttl_site/giftApi.do?mthd=searchGift&giftCategoryId=7&pageNo=1&pageSize=8`,
-            headers: {
-                'User-Agent': 'okhttp/3.6.0',
+            headers:{
+                'User-Agent':'okhttp/3.6.0',
             }
         };
-        $.get(param, async (error, response, data) => {
-            try {
+        $.get(param, async(error, response, data) =>{
+            try{
                 const result = JSON.parse(data);
                 const gifts = result.gifts;
                 let msg = '';
@@ -104,7 +106,7 @@ async function ttl_gift() {
                     giftPrice[giftId] = price;
                 }
                 $.log(`${msg}`);
-            } catch (e) {
+            }catch(e) {
                 $.logErr(e, response);
             } finally {
                 resolve();
@@ -114,8 +116,8 @@ async function ttl_gift() {
 }
 
 async function ttl_login() {
-    url = `http://www.ttljf.com/ttl_site/user.do`;
-    body = `mthd=login&username=${user}&password=${pwd}&platform=android`;
+    url=`http://www.ttljf.com/ttl_site/user.do`;
+    body=`mthd=login&username=${user}&password=${pwd}&platform=android`;
     let config = {
         url: url,
         body: body,
@@ -139,10 +141,10 @@ async function ttl_login() {
                 data = JSON.parse(body);
                 if (data.code === '0000') {
                     $.token = data.user.loginToken;
-                    $.setdata('ttlToken', $.token)
+                    $.setdata('ttlToken',$.token)
                     $.userId = data.user.userId;
                     $.userName = data.user.userName;
-                    $.integral = data.user.integral;
+                    $.integral =  data.user.integral;
                     console.log(`token：${$.token} 积分：${$.integral}`);
                     $.setdata($.integral, `${date}_${user}`);
                     console.log(`设置当天积分缓存成功!`);
@@ -159,8 +161,8 @@ async function ttl_login() {
 }
 
 async function ttl_dh() {
-    url = `http://www.ttljf.com/ttl_site/chargeApi.do`;
-    body = `method=charge&userId=${$.userId}&loginToken=${$.token}&mobile=${user}&giftId=${giftId}`;
+    url=`http://www.ttljf.com/ttl_site/chargeApi.do`;
+    body=`method=charge&userId=${$.userId}&loginToken=${$.token}&mobile=${user}&giftId=${giftId}`;
     let config = {
         url: url,
         body: body,
