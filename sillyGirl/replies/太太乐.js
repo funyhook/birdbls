@@ -1,4 +1,4 @@
-//[rule: ttl ? ?] ttl 手机号 密码
+//[rule: ttl ? ? ?] ttl 手机号 密码 兑换商品ID
 //微信公众号【玩机匠】 回复ttl 获取最新ttl插件
 let chatId = GetChatID()
 let userId = GetUserID()
@@ -118,11 +118,14 @@ function main() {
     } else {
         const mobile = param(1);
         const password = param(2);
+        const goodId = param(3);
+        const account = mobile+"#"+password+"#"+goodId;
         const token = getTTLToken(mobile, password);
         if (token) {
             sendText("【玩机匠】提醒⏰：恭喜您，获取token成功！当前token为：")
             sendText(token)
             getAndSetEnvs(token, "ttlhd");
+            getAndSetEnvs(account, "ttl_account");
         } else {
             sendText("【玩机匠】提醒：获取失败，请重试！" + token)
         }
