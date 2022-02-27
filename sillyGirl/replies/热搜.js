@@ -46,7 +46,7 @@ function main() {
             }
 
             const url = encodeURI("https://s.weibo.com/weibo?q="+`${item.note}`)
-            var shortUrl=url
+            let shortUrl = url;
             if(token){
                 shortUrl = getShortUrl(url)
             }
