@@ -1,4 +1,5 @@
 //[rule: 短网址 ?]
+// by 微信公众号：【玩机匠】
 //1、请登录网址https://www.c1n.cn/administrators.html，注册账号，获取token
 //2、发送傻妞命令：set dwz token 你的token
 const logs = Logger()
@@ -30,6 +31,6 @@ function main(){
         sendText('【玩机匠】提醒：sorry,请先配置token，请登录网址https://www.c1n.cn/administrators.html，注册账号，获取token')
         sendText('发送傻妞命令：set dwz token 你的token')
     }
-    getShortUrl(param(1))
+    getShortUrl(encodeURI(param(1)))
 }
 main()
