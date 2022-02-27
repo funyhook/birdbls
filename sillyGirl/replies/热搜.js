@@ -3,7 +3,12 @@
 var logs = Logger()
 var request = Request();
 let token = bucketGet("dwz", "token")
-
+//是否开启短网址转换  true开启；false关闭
+//1、请登录网址https://www.c1n.cn/administrators.html，注册账号，获取token
+//2、发送傻妞命令：set dwz token 你的token
+//3、发送三妞命令：set dwz rs true
+//4、关闭热搜短网址转换：set dwz rs false
+let turnShort = bucketGet("dwz","rs")
 function getShortUrl(longUrl){
 
     var  data = request({
@@ -47,7 +52,7 @@ function main() {
 
             const url = encodeURI("https://s.weibo.com/weibo?q="+`${item.note}`)
             let shortUrl = url;
-            if(token){
+            if(token && turnShort && turnShort=="true"){
                 shortUrl = getShortUrl(url)
             }
             hots.push(`${+key + 1}. ${item.note}：`+shortUrl)
