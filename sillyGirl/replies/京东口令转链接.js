@@ -11,12 +11,17 @@ request({
     headers: {
         "content-type": "application/json",
     },
+    Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTU0NjA3MTI5OCwiaWF0IjoxNjUzMzk3MzQwLCJleHAiOjE2ODQ5MzMzNDB9.Qzn2r8_YYR6ZjUpttA-oy4KmHxgSrrEiP8lRusW8hY4",
     body: _data
 },function(err, resp, data) {
-    if (!err && resp.statusCode == 200) {
-    	if(data){
-    		sendText(data.data.jumpUrl)}
+    if(err){
+        sendText("【玩机匠】提醒：网络异常，稍后重试！：")
+    }
+    if (resp.statusCode == 200 && data) {
+        sendText(data.data.jumpUrl)
+    }else if (resp.statusCode==401) {
+        sendText("【玩机匠】提醒：暂无接口请求权限："+resp.statusCode)
     }else{
-    		sendText("【玩机匠】提醒：网络请求失败："+JSON.stringify(data))
-    	}
+        sendText("【玩机匠】提醒：网络异常，稍后重试！：")
+    }
 });
