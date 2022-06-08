@@ -1,6 +1,8 @@
 //[rule:code ?]
 //[rule:转口令 ?]
 
+//功能：京东口令解析
+//作者：微信公众号【玩机匠】！
 var token = "xxxxxxxxxxxx"// 这里输入你的token
 
 var code = param(1);
