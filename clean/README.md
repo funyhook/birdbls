@@ -6,11 +6,22 @@ docker exec -it 你的青龙名称 bash
 ```
 #### 2、clear.sh
 ``` shell
+2.10版本：
 cd /ql/config && wget https://ghproxy.com/https://raw.githubusercontent.com/funyhook/birdbls/main/clean/clear.sh
+
+2.12及以上版本：
+cd /ql/data/config && wget https://ghproxy.com/https://raw.githubusercontent.com/funyhook/birdbls/main/clean/clear.sh
+
 ```
+
 #### 3、打开青龙面板-新建定时任务
 ``` shell
+
+2.10版本：
 task /ql/config/clear.sh 
+
+2.12及以上版本
+task /ql/data/config/clear.sh
 ```
 #### 4、于拉库命令先后执行，建议间隔至少50秒
 - 举例：
