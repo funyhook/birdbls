@@ -7,14 +7,14 @@
 //[rule: raw [$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]]
 
 var token = bucketGet("windfgg", "token") // 对机器人发送 set windfgg token 你的token
-var host  =  bucketGet("windfgg", "host") // 对机器人发送 set windfgg host 你的host
+var host  =  bucketGet("windfgg", "host") // 对机器人发送 set windfgg host https://api.windfgg.cf
 var code  = GetContent();
 sendText("正在解析口令，请稍等片刻......")
 var _data = {"code": code}
 
 if (isAdmin()) {
     request({
-        url: 'https://api.windfgg.cf/jd/code',
+        url: host+'/jd/code',
         method: 'POST',
         dataType:'json',
         headers: {
