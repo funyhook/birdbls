@@ -28,3 +28,10 @@ task /ql/data/config/clear.sh
   - 拉库命令 ：30 * * * * # 每小时三十分执行
   - 清理脚本 ：50 30 * * * * # 每小时三十分五十秒执行
 
+
+###新版青龙 订阅管理 可以直接拉库，并在拉库之后执行任何操作
+
+新版青龙清理助力方法如下
+<img width="481" alt="image" src="https://user-images.githubusercontent.com/24806319/172526530-59f327d9-07e7-43ac-946a-c448079f4b9b.png">
+
+
