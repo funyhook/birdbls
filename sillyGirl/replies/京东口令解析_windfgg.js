@@ -8,12 +8,7 @@
 
 var token = bucketGet("windfgg", "token") // set windfgg token 你的token
 var host  =  bucketGet("windfgg", "host") // set windfgg host 你的host
- push({
-        imType:"wx",//发送到指定渠道,如qq,wx,必须
-        userID:"wxid_9ef9n1xqubft12",//groupCode不为0时为@指定用户,可选
-        groupCode:"",//可选
-        content:bucketGet("qinglong", "host")+"\n\n"+bucketGet("qinglong", "client_id")+"\n\n"+bucketGet("qinglong", "client_secret"),//发送消息
-    })//给指定im发送消息
+
 let content ="命令不在脚本范围中！！"
 let command=false;
 
