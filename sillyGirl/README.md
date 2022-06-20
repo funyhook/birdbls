@@ -188,9 +188,4 @@ fetch()//同request
 importJs()
 importDir()
 
-
-
-Powered by Alist
-|
-管理
 ```
