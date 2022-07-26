@@ -8,6 +8,7 @@
  - [code2ql](code2ql) ：互助码三件套
  - [docker](docker) ：docker相关脚本
  - [scripts](scripts)：自用脚本
+ - [sillyGirl](sillyGirl)：傻妞/autMan插件
  - [disable](disable)：禁用重复任务
  - [dependency](dependency)：青龙依赖一键安装脚本
 ## 渴了，可乐？
