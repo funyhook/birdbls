@@ -1,4 +1,6 @@
-
+# <h1 align="center"> welcome 👋 玩机匠,  </h1>
+# <p>欢迎访问：[我的网站](https://www.funyhook.com/ "玩机匠")💖</p>
+# [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=funyhook)](https://github.com/funyhook/tuku/) [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=funyhook)](https://github.com/funyhook/tuku/)
 ###
 自用，下载后24小时删除！
 ### 目录说明
