@@ -1,4 +1,6 @@
 
+var shortUrl_key=bucketGet("shortUrl", "key") // set shortUrl key 你的suo.imp的key
+
 //获取当前时间
 function getDataTimeNow() {
   let now = new Date(),
@@ -24,4 +26,22 @@ function getUrlValueByName(name,url) {
         return decodeURIComponent(r[2]);
     }
     return null;
+ }
+ 
+ //获取短链接
+ function getShortUrl(longUrl){
+    var result = request({
+        url:"https://api.funyhook.com/api/common/shortUrl", //请求链接
+        headers:getHeader(),
+        method: "post", //请求方法
+        dataType: "json", //这里接口直接返回文本，所以不需要指定json类型数据
+        body:{
+            "longUrl":longUrl,
+            "apiKey":shortUrl_api_key
+        }
+    })
+    if (result.code==200) {
+        return result.data.url
+    }
+    return longUrl
  }
