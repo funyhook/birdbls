@@ -1,5 +1,10 @@
-####使用必读
-## 清助力（replace.sh）使用方法：
+## 使用必读
+### 屏蔽助力池（bi.sh）使用方法
+```shell
+ql task curl https://raw.githubusercontent.com/funyhook/birdbls/main/clean/bi.sh -o bi.sh && bash bi.sh
+```
+
+### 清助力（replace.sh）使用方法：
 #### 1、进入青龙容器
 ``` shell
 docker exec -it 你的青龙名称 bash
