@@ -1,4 +1,4 @@
-//功能：京东口令解析_自建接口版本教程：
+//功能：京东口令解析_自建接口版本教程：https://github.com/funyhook/Docker/tree/main/official
 //作者：微信公众号【玩机匠】！
 //[rule: raw (https:\/\/\w+-isv.isvjcloud.com\/.*Activity\/activity.*activityId=\w+)&?]
 //[rule: raw ((?:\d{2}:)?\/(?:\(|！|%|￥)\w{10,12}(?:\)|！|%|￥|\/){1,2})]
