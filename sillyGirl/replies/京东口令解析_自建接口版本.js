@@ -6,8 +6,6 @@
 //[rule: raw [$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]]
 //[priority: 9999999]优先级
 var api = bucketGet("jd_command", "api") // 对机器人发送指令 set jd_command api http://ip:port/jd/jKeyCommand?key=
-var content = "命令不在脚本范围中！！"
-var command = false;
 var filters = [{
         'reg': RegExp(/https:\/\/cjhydz-isv.isvjcloud.com\/wxTeam\/activity/),
         'msg': "CJ组队瓜分变量】",
@@ -128,7 +126,7 @@ function GetRequest(urlStr) {
         // 获取url中"?"符后的字符串
         var url = decodeURI(location.search);
     } else {
-        var url = "?" + urlStr.split("?")[1];
+        url = "?" + urlStr.split("?")[1];
     }
     var theRequest = new Object();
     if (url.indexOf("?") != -1) {
@@ -170,6 +168,8 @@ function main() {
             title = result.data.title;
             Name = result.data.userName;
             Img = result.data.img;
+        }else{
+            sendText("【玩机匠】提醒：暂无接口请求权限："+JSON.stringify(result))
         }
     }
     sendText("正在解析请稍候……");
@@ -190,9 +190,13 @@ function main() {
                     filter.expo = filter.expo + code+"'";
                     break;
             }
-            var content2 = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】：" + result.data.jumpUrl + "\n \n 洞察变量-" + filter.msg + "\n " + filter.expo
+            var content = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】：" + result.data.jumpUrl + "\n \n 洞察变量-" + filter.msg + "\n " + filter.expo
+            sendText(tontent)
+            break;
+        }else{
+            var content2 = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】：" + result.data.jumpUrl + "\n \n 洞察变量-无"
             sendText(content2)
-
+            break;
         }
     }
 }
