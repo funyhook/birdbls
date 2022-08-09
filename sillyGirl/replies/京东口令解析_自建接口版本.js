@@ -175,7 +175,7 @@ function main() {
     sendText("正在解析请稍候……");
     var prefix = urlStr.includes("cjhydz") ? "cjhydz" : "lzkjdz";
     var activateId = urlStr.replace(/.*\?activityId\=([^\&]*)\&?.*/g, "$1")
-    var Code = urlStr.replace(/.*\?code\=([^\&]*)\&?.*/g, "$1");
+    var code = urlStr.replace(/.*\?code\=([^\&]*)\&?.*/g, "$1");
     for (var i = 0; i < filters.length; i++) {
         let filter = filters[i];
         if (filter.reg.exec(urlStr)) {
