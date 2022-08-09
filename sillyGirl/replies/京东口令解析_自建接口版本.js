@@ -2,116 +2,116 @@
 //作者：微信公众号【玩机匠】！
 //[rule: raw (https:\/\/\w+-isv.isvjcloud.com\/.*Activity\/activity.*activityId=\w+)&?]
 //[rule: raw ((?:\d{2}:)?\/(?:\(|！|%|￥)\w{10,12}(?:\)|！|%|￥|\/){1,2})]
-//[rule: raw export ([^"]+)="([^"]+)"]
+//[rule: raw  ([^"]+)="([^"]+)"]
 //[rule: raw [$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]]
 //[priority: 9999999]优先级
 var api = bucketGet("jd_command", "api") // 对机器人发送指令 set jd_command api http://ip:port/jd/jKeyCommand?key=
 var filters = [{
         'reg': RegExp(/https:\/\/cjhydz-isv.isvjcloud.com\/wxTeam\/activity/),
         'msg': "CJ组队瓜分变量】",
-        'expo': "export jd_cjhy_activityId=",
+        'env': "jd_cjhy_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxTeam\/activity/),
         'msg': "【LZ组队瓜分变量】",
-        'expo': "export jd_zdjr_activityId='",
+        'env': "jd_zdjr_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxShareActivity\/activity\/6432842/),
         'msg': "【LZ分享有礼变量】",
-        'expo': "export jd_fxyl_activityId='",
+        'env': "jd_fxyl_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/cjhydz-isv.isvjcloud.com\/microDz\/invite\/activity\/wx\/view\/index/),
         'msg': "【微定制瓜分变量】",
-        'expo': "export jd_wdz_activityId='",
+        'env': " jd_wdz_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkj-isv.isvjd.com\/wxCollectionActivity\/activity2/),
         'msg': "【M加购任务变量】",
-        'expo': "export M_WX_ADD_CART_URL='",
+        'env': " M_WX_ADD_CART_URL",
         'type': 'url'
     },
     {
         'reg': RegExp(/https:\/\/cjhy-isv.isvjcloud.com\/wxDrawActivity\/activity\/867591/),
         'msg': "【M转盘抽奖变量】",
-        'expo': "export M_WX_LUCK_DRAW_URL='",
+        'env': " M_WX_LUCK_DRAW_URL",
         'type': 'url'
     },
     {
         'reg': RegExp(/cjwx\/common\/entry.html/),
         'msg': "【M转盘抽奖变量】",
-        'expo': "export M_WX_LUCK_DRAW_URL='",
+        'env': " M_WX_LUCK_DRAW_URL",
         'type': 'url'
     },
     {
         'reg': RegExp(/https:\/\/lzkj-isv.isvjcloud.com\/wxgame\/activity/),
         'msg': "【通用游戏变量】",
-        'expo': "export WXGAME_ACT_ID='",
+        'env': " WXGAME_ACT_ID",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxShareActivity/),
         'msg': "【Kr分享有礼变量】",
-        'expo': "export jd_fxyl_activityId='",
+        'env': " jd_fxyl_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxSecond/),
         'msg': "【读秒变量】",
-        'expo': "export jd_wxSecond_activityId='",
+        'env': " jd_wxSecond_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/jinggengjcq-isv.isvjcloud.com/),
         'msg': "【大牌联合开卡变量】",
-        'expo': "export DPLHTY='",
+        'env': " DPLHTY",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxCartKoi\/cartkoi/),
         'msg': "【购物车鲤鱼变量】",
-        'expo': "export jd_wxCartKoi_activityId='",
+        'env': " jd_wxCartKoi_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxCollectCard/),
         'msg': "【集卡抽奖变量】",
-        'expo': "export jd_wxCollectCard_activityId='",
+        'env': " jd_wxCollectCard_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkj-isv.isvjd.com\/drawCenter/),
         'msg': "【LZ刮刮乐抽奖变量】",
-        'expo': "export jd_drawCenter_activityId='",
+        'env': " jd_drawCenter_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxFansInterActionActivity/),
         'msg': "【LZ粉丝互动变量】",
-        'expo': "export jd_wxFansInterActionActivity_activityId='",
+        'env': " jd_wxFansInterActionActivity_activityId",
         'type': 'id'
     },
     {
         'reg': RegExp(/https:\/\/prodev.m.jd.com\/mall\/active\/dVF7gQUVKyUcuSsVhuya5d2XD4F/),
         'msg': "【邀请好友赢大礼变量】",
-        'expo': "export yhyauthorCode='",
+        'env': " yhyauthorCode",
         'type': 'code'
     },
     {
         'reg': RegExp(/https:\/\/lzkj-isv.isvjcloud.com\/wxShopFollowActivity/),
         'msg': "【关注抽奖变量】",
-        'expo': "export jd_wxShopFollowActivity_activityId='",
+        'env': " jd_wxShopFollowActivity_activityId",
         "type": 'id'
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxUnPackingActivity/),
         'msg': "【让福袋飞通用活动变量】",
-        'expo': "export jd_wxUnPackingActivity_activityId='",
+        'env': " jd_wxUnPackingActivity_activityId",
         "type": 'id'
     }
 ];
@@ -176,28 +176,30 @@ function main() {
     var prefix = urlStr.includes("cjhydz") ? "cjhydz" : "lzkjdz";
     var activateId = urlStr.replace(/.*\?activityId\=([^\&]*)\&?.*/g, "$1")
     var code = urlStr.replace(/.*\?code\=([^\&]*)\&?.*/g, "$1");
+    var conmand =false;
     for (var i = 0; i < filters.length; i++) {
         let filter = filters[i];
         if (filter.reg.exec(urlStr)) {
+            conmand=true
             switch (filter.type) {
                 case 'id':
-                    filter.expo = filter.expo + activateId+"'";
+                    filter.env = 'export '+filter.env+'="' + activateId+'"';
                     break;
                 case 'url':
-                    filter.expo = filter.expo + urlStr+"'";
+                    filter.env =  'export '+filter.env+'="' + urlStr+'"';
                     break;
                 case 'code':
-                    filter.expo = filter.expo + code+"'";
+                    filter.env = 'export '+filter.env+'="' + code+'"';
                     break;
             }
-            var content = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】：" + result.data.jumpUrl + "\n \n 洞察变量-" + filter.msg + "\n " + filter.expo
-            sendText(tontent)
-            break;
-        }else{
-            var content2 = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】：" + result.data.jumpUrl + "\n \n 洞察变量-无"
-            sendText(content2)
+            var content = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】："+result.data.jumpUrl + "\n \n 洞察变量-" + filter.msg + "\n " + filter.env
+            sendText(content)
             break;
         }
+    }
+    if (!conmand) {
+        sendText("【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】："+result.data.jumpUrl+"\n \n洞察变量-无")
+        
     }
 }
 main()
