@@ -1,16 +1,18 @@
-//功能：京东口令解析_自建接口版本教程：https://github.com/funyhook/Docker/tree/main/official
-//作者：微信公众号【玩机匠】！
-//[rule: raw (https:\/\/\w+-isv.isvjcloud.com\/.*Activity\/activity.*activityId=\w+)&?]
-//[rule: raw ((?:\d{2}:)?\/(?:\(|！|%|￥)\w{10,12}(?:\)|！|%|￥|\/){1,2})]
-//[rule: raw  ([^"]+)="([^"]+)"]
+//需要自建接口---->教程：https://github.com/chiupam/Docker/tree/main/official
+//[rule: raw (https:\/\/\w+-isv.isvjcloud.com\/.*\/activity.*activityId=\w+)&?]
 //[rule: raw [$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]]
 //[priority: 9999999]优先级
+
+//作者：微信公众号【玩机匠】！
+//功能：京东口令解析接口板
 var api = bucketGet("jd_command", "api") // 对机器人发送指令 set jd_command api http://ip:port/jd/jKeyCommand?key=
+var repo = bucketGet("jd_command","repo") // 脚本路径：set jd_command repo /ql/data/scripts/KingRan_KR/
 var filters = [{
         'reg': RegExp(/https:\/\/cjhydz-isv.isvjcloud.com\/wxTeam\/activity/),
-        'msg': "CJ组队瓜分变量】",
+        'msg': "【CJ组队瓜分变量】",
         'env': "jd_cjhy_activityId",
-        'type': 'id'
+        'type': 'id',
+        'scripts':""
     },
     {
         'reg': RegExp(/https:\/\/lzkjdz-isv.isvjcloud.com\/wxTeam\/activity/),
@@ -144,9 +146,10 @@ function GetRequest(urlStr) {
 function main() {
     var jcode = GetContent();
     if (reg.exec(jcode)) {
-        var urlStr = jcode.match(reg)[0];
+        var urlStr = jcode.match(reg)[0].split("?")[0];
+        sendText(urlStr)
         var title = "京东活动";
-        var Name = GetUsername();
+        var userName = GetUsername();
         var Img = "https://c2cpicdw.qpic.cn/offpic_new/56794501//56794501-1551249874-8DA68415682CE9508B9FEED6FA49DFA1/0?term=255";
     } else {
         if (!api) {
@@ -166,10 +169,11 @@ function main() {
         if (result.code == "200") {
             urlStr = result.data.jumpUrl;
             title = result.data.title;
-            Name = result.data.userName;
+            userName = result.data.userName;
             Img = result.data.img;
         }else{
-            sendText("【玩机匠】提醒：暂无接口请求权限："+JSON.stringify(result))
+            sendText("【玩机匠】提醒：服务异常："+JSON.stringify(result))
+            return;
         }
     }
     sendText("正在解析请稍候……");
@@ -192,13 +196,13 @@ function main() {
                     filter.env = 'export '+filter.env+'="' + code+'"';
                     break;
             }
-            var content = "【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】："+result.data.jumpUrl + "\n \n 洞察变量-" + filter.msg + "\n " + filter.env
+            var content = "【发  起  人】：" + userName + "\n \n【活动名称】：" + title + "\n \n【活动地址】："+urlStr + "\n \n 洞察变量-" + filter.msg + "\n " + filter.env
             sendText(content)
             break;
         }
     }
     if (!conmand) {
-        sendText("【发  起  人】：" + result.data.userName + "\n \n【活动名称】：" + result.data.title + "\n \n【活动地址】："+result.data.jumpUrl+"\n \n洞察变量-无")
+        sendText("【发  起  人】：" + userName + "\n \n【活动名称】：" + title + "\n \n【活动地址】："+urlStr+"\n \n洞察变量-无")
         
     }
 }
