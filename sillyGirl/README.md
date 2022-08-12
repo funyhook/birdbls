@@ -187,5 +187,12 @@ request()
 fetch()//同request
 importJs()
 importDir()
+傻妞js插件新功能:
+//[show: 插件说明] 自定义插件说明
+//[imType:qq,wx] 白名单,只在qq,wx生效
+//[imType+:qq,wx] 同上,不写+号默认为白名单模式
+//[imType-:qq] 黑名单qq,除了qq生效
+//[userId+:id1,id2] 同样支持黑白名单模式
+//[groupId+:id1,id2] 同样支持黑白名单模式
 
 ```
