@@ -19,18 +19,22 @@ var headers = {
 
 const mobile = s.param(1);
 getCode(mobile)
-const code = input();
-getJzttToken(mobile,code)
+var newS = s.listen(30000)//返回一个sender对象，超时后返回null
+if(newS==null){
+    s.reply("超时，30秒内未回复。")
+}else{
+    getJzttToken(mobile,newS.getContent())
+}
+
 //九章登录
 function getJzttToken(mobile,code) {
+    s.reply(mobile+"::"+code)
     const data = request({
         url: jz_host+"/login",
         "dataType": "json",
-        "body": {
-            mobile:mobile,
-            code:code
-        }
+        "body": "mobile=" + mobile + "&code=" + code,
     });
+    s.reply(JSON.stringify(data))
     if (data && data.code == 0) {
         if (data.data.token.code) {
             s.reply("😂😂😂，获取token失败：" + data.data.token.msg)
