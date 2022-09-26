@@ -10,7 +10,7 @@
  */
 
 const s = sender 
-const jz_host='https://api.st615.com/api/oauth'
+const jz_host='http://api.st615.com/api/oauth'
 
 var headers = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Mobile Safari/537.36",
@@ -50,7 +50,7 @@ function getJzttToken(mobile,code) {
 function getCode(mobile) {
     s.reply("正在发送验证码:")
     const data = request({
-        url: "https://api.st615.com/api/oauth/message?mobile=" + mobile,
+        url: jz_host+"/message?mobile=" + mobile,
         "headers": headers,
         "method": "get",
         "dataType": "json"
