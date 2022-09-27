@@ -59,7 +59,6 @@ function getCode(mobile) {
         "method": "get",
         "dataType": "json"
     });
-    s.reply(JSON.stringify(data))
     s.reply("验证码已发送，请注意查收！")
     s.reply("请输入验证码:")
 }
