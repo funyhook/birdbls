@@ -1,4 +1,4 @@
-// [rule: 召唤 ?]
+// [rule: 召唤 ?] 支持jd elm 举例子：召唤 jd ；召唤 elm
 // [disable: false ] 是否禁用
 // [admin: true] 是否只允许管理员使用
 //转发请留下原作者-微信公众号【玩机匠】！
