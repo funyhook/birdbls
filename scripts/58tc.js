@@ -4,10 +4,23 @@
 安卓貌似需要root才能捉到包，IOS随便捉
 多账号切换账号不能退出登录
 
-手动捉包把PPU=UID=xxxx&UN=yyyy&...填到wbtcCookie里，多账号@隔开
+手动捉包把PPU=UID=xxxx&UN=yyyy&...#ua=你的手机ua填到wbtcCookie里，多账号@隔开
 注意前面有个PPU=，捉包只有UID=xxx的话手动加上
 
-自定义UA：填到wbtcUA里，不填默认IOS15的UA
+
+wbtcCookie='PPU=UID=xxxx&UN=yyyy&...#ua=你的手机ua'
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+一个号一个ua
+ 否则黑号！！！！！！！
+
 
 只做普通任务一天3毛左右，跑小游戏的话一天5毛到6毛
 账号能刷到新手奖励的话每天额外8毛4，前七天还有每天额外3毛(满5提现到矿石)，第一天做完新手任务就能提5块
@@ -60,6 +73,7 @@ class UserInfo {
         let strArr = str.split('#')
         this.index = ++userIdx
         this.cookie = strArr[0]
+        this.userUA=strArr[1]
         this.cashSign = true
         this.newbie = {}
         this.house = {}
@@ -77,7 +91,7 @@ class UserInfo {
     async getTaskList(sceneId) {
         let url = `https://taskframe.58.com/web/task/dolist?sceneId=${sceneId}&openpush=0&source=`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -104,9 +118,11 @@ class UserInfo {
     }
     
     async doTask(sceneId,taskId) {
-        let url = `https://taskframe.58.com/web/task/dotask?timestamp=${(new Date()).getTime()}&sign=${randomString(32)}&taskId=${taskId}`//&taskData=15`
+        var time = `${(new Date()).getTime()}`
+        var signo = `${time}${taskId}`
+        let url = `https://taskframe.58.com/web/task/dotask?timestamp=${time}&sign=${MD5Encrypt(signo)}&taskId=${taskId}`//&taskData=15`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -119,9 +135,11 @@ class UserInfo {
     }
     
     async getReward(sceneId,taskId) {
-        let url = `https://taskframe.58.com/web/task/reward?timestamp=${(new Date()).getTime()}&sign=${randomString(32)}&taskId=${taskId}`
+        var time = `${(new Date()).getTime()}`
+        var signo = `${time}${taskId}`
+        let url = `https://taskframe.58.com/web/task/reward?timestamp=${time}&sign=${MD5Encrypt(signo)}&taskId=${taskId}`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -136,7 +154,7 @@ class UserInfo {
     async newbieMaininfo() {
         let url = `https://rightsplatform.58.com/web/motivate/maininfo`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -171,7 +189,7 @@ class UserInfo {
     async newbieSign() {
         let url = `https://rightsplatform.58.com/web/motivate/sign`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('post',urlObject)
         let result = httpResult;
         if(!result) return
@@ -187,7 +205,7 @@ class UserInfo {
     async newbieWithdraw(withItem) {
         let url = `https://rightsplatform.58.com/web/motivate/withdraw`
         let body = `id=${withItem.id}`
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('post',urlObject)
         let result = httpResult;
         if(!result) return
@@ -202,7 +220,7 @@ class UserInfo {
     async houseSignStatus() {
         let url = `https://lovely-house.58.com/sign/info`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -227,7 +245,7 @@ class UserInfo {
     async houseSign() {
         let url = `https://lovely-house.58.com/sign/signin`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('post',urlObject)
         let result = httpResult;
         if(!result) return
@@ -242,7 +260,7 @@ class UserInfo {
     async houseWithdrawPage() {
         let url = `https://lovely-house.58.com/web/exchange/info`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -263,7 +281,7 @@ class UserInfo {
     async houseWithdraw(withItem) {
         let url = `https://lovely-house.58.com/web/exchange/ore`
         let body = `id=${withItem.id}`
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('post',urlObject)
         let result = httpResult;
         if(!result) return
@@ -278,7 +296,7 @@ class UserInfo {
     async oreMainpage(dotask=true) {
         let url = `https://magicisland.58.com/web/mineral/main?openSettings=0`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -328,7 +346,7 @@ class UserInfo {
     async getDailyore() {
         let url = `https://magicisland.58.com/web/mineral/dailyore`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -343,7 +361,7 @@ class UserInfo {
     async oreSign() {
         let url = `https://magicisland.58.com/web/sign/signInV2?sessionId=&successToken=&scene=null`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -360,7 +378,7 @@ class UserInfo {
     async miningUserInfo() {
         let url = `https://magicisland.58.com/web/mining/userInfo`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -392,7 +410,7 @@ class UserInfo {
     async miningGain(id) {
         let url = `https://magicisland.58.com/web/mining/gain?id=${id}`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -407,7 +425,7 @@ class UserInfo {
     async miningEnroll() {
         let url = `https://magicisland.58.com/web/mining/enroll`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -422,7 +440,7 @@ class UserInfo {
     async auctionInfo() {
         let url = `https://magicisland.58.com/web/auction/second`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         urlObject.headers.Referer = 'https://magicisland.58.com/web/v/lowauctiondetail'
         await httpRequest('get',urlObject)
         let result = httpResult;
@@ -461,7 +479,7 @@ class UserInfo {
     async auctionBid(prize) {
         let url = `https://magicisland.58.com/web/auction/bid`
         let body = `ore=${prize}`
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         urlObject.headers.Referer = 'https://magicisland.58.com/web/v/lowauctiondetail'
         await httpRequest('post',urlObject)
         let result = httpResult;
@@ -477,7 +495,7 @@ class UserInfo {
     async auctionModify(prize,number) {
         let url = `https://magicisland.58.com/web/auction/modify`
         let body = `ore=${prize}&number=${number}`
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         urlObject.headers.Referer = 'https://magicisland.58.com/web/v/lowauctiondetail'
         await httpRequest('post',urlObject)
         let result = httpResult;
@@ -493,7 +511,7 @@ class UserInfo {
     async oreGameScore() {
         let url = `https://magicisland.58.com/web/mineral/gameprocessore`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -508,7 +526,7 @@ class UserInfo {
     async attendanceDetail() {
         let url = `https://magicisland.58.com/web/attendance/detail/info?productorid=3`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -547,7 +565,7 @@ class UserInfo {
         let type = attendType[item.type]
         let url = `https://magicisland.58.com/web/attendance/signIn`
         let body = `number=${item.number}&category=${item.type}&productorid=3`
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         urlObject.headers.Referer = 'https://magicisland.58.com/web/v/client'
         await httpRequest('post',urlObject)
         let result = httpResult;
@@ -563,7 +581,7 @@ class UserInfo {
     async attendanceAttend(attendList) {
         let url = `https://magicisland.58.com/web/attendance/attend`
         let body = `productorid=3${attendList}`
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         urlObject.headers.Referer = 'https://magicisland.58.com/web/v/client'
         await httpRequest('post',urlObject)
         let result = httpResult;
@@ -579,7 +597,7 @@ class UserInfo {
     async cashSigninlist() {
         let url = `https://tzbl.58.com/tzbl/taskcenter/signinlist?requestSource=1`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -596,7 +614,7 @@ class UserInfo {
     async cashSignin() {
         let url = `https://tzbl.58.com/tzbl/taskcenter/signin?requestSource=1`
         let body = ``
-        let urlObject = populateUrlObject(url,this.cookie,body)
+        let urlObject = populateUrlObject(url,this.cookie,body,this.userUA)
         await httpRequest('get',urlObject)
         let result = httpResult;
         if(!result) return
@@ -779,7 +797,8 @@ async function showmsg() {
     }
 }
 ////////////////////////////////////////////////////////////////////
-function populateUrlObject(url,cookie,body=''){
+function populateUrlObject(url,cookie,body='',ua){
+    // console.log(cookie,ua)
     let host = (url.split('//')[1]).split('/')[0]
     let urlObject = {
         url: url,
@@ -788,7 +807,7 @@ function populateUrlObject(url,cookie,body=''){
             'Cookie' : cookie,
             'Connection' : 'keep-alive',
             'Accept' : 'application/json, text/plain, */*',
-            'User-Agent' : userUA,
+            'User-Agent' : ua,
             'Accept-Language' : 'zh-CN,zh-Hans;q=0.9',
             'Accept-Encoding' : 'gzip, deflate, br',
         },
